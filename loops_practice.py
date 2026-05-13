@@ -6,3 +6,9 @@ class TaskSolution:
             if n == 5:
                 break
             print(n)
+
+    @staticmethod
+    def print_words():
+        words = [f"str{i}" for i in range(10)]
+        for word in words:
+            print(word)
