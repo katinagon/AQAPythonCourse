@@ -8,6 +8,9 @@ authors = [
 requires-python = ">=3.14"
 dependencies = [
     "pytest (>=9.0.3,<10.0.0)",
+    "selenium (>=4.44.0,<5.0.0)",
+    "selene (>=1.0.2,<2.0.0)",
+    "webdriver-manager (>=4.0.2,<5.0.0)",
 ]
 
 [tool.poetry]
