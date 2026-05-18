@@ -30,6 +30,9 @@ class Student:
     def get_avg_grades(student: Student):
         return sum(student.grades) / len(student.grades)
 
+    def get_grades(self):
+        return self.grades
+
 
 car1 = Car("Toyota", "321", 2020)
 car1.print_car_info()
@@ -101,6 +104,7 @@ student2 = Student(name="Bob", age=20, grades=[3.5, 4.3, 3.63])
 print(Student.get_avg_grades(student2))
 student3 = Student(name="Alex", age=18, grades=[5.0, 5.0, 4.5])
 print(Student.get_avg_grades(student3))
+print(student1.get_grades())
 
 students = [student1, student2, student3]
 for person in students:
