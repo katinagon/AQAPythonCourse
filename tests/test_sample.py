@@ -11,17 +11,17 @@ def autouse_fix():
     print("Выполняется для каждого теста")
 
 
-def test1(scope_module, fixture_for_all_tests):
+def test1(scope_module):
     print("Тест 1")
 
 
 @pytest.mark.xfail
-def test2(scope_module, fixture_for_all_tests):
+def test2(scope_module):
     print("Тест 2")
 
 
 @pytest.mark.skip
-def test3(scope_module, fixture_for_all_tests):
+def test3(scope_module):
     print("Тест 3")
 
 

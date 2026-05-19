@@ -1,3 +1,4 @@
+import pytest
 from playwright.sync_api import expect
 from selenium.webdriver.common.by import By
 
@@ -5,6 +6,7 @@ from pages.playwright.login import LoginPagePlaywright
 from pages.selenium.login import LoginPageSelenium
 
 
+@pytest.mark.ui
 def test_login_success_with_selenium(driver):
     login_page = LoginPageSelenium(driver)
     login_page.open()
@@ -13,6 +15,7 @@ def test_login_success_with_selenium(driver):
     assert greeting == "Hi, practice!"
 
 
+@pytest.mark.ui
 def test_login_success_with_playwright(page):
     login_page = LoginPagePlaywright(page)
     login_page.open()
