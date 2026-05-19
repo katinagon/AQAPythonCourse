@@ -12,6 +12,8 @@ dependencies = [
     "selene (>=1.0.2,<2.0.0)",
     "webdriver-manager (>=4.0.2,<5.0.0)",
     "requests (>=2.34.2,<3.0.0)",
+    "pytest-playwright (>=0.8.0,<0.9.0)",
+    "playwright (>=1.60.0,<2.0.0)",
 ]
 
 [tool.poetry]
