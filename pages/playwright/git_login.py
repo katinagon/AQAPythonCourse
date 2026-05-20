@@ -9,19 +9,14 @@ print("DEBUG AVATAR:", f'button[data-login="{os.getenv("GH_LOGIN")}"]')
 
 
 class GitLoginPage(BasePagePlaywright):
-    _BASE_URL = os.getenv("BASE_URL")
-    _LOGIN = os.getenv("GH_LOGIN")
-    _PASSWORD = os.getenv("GH_PASSWORD")
-    _USERNAME = os.getenv("GH_USERNAME")
-
     LOGIN_INPUT = "#login_field"
     PASSWORD_INPUT = "#password"
     LOGIN_BUTTON = 'input[name="commit"]'
     DASHBOARD_TEXT = '//span[text()="Dashboard"]'
     HOME_TEXT = '//h2[text()="Home"]'
-    AVATAR = f'button[data-login="{_LOGIN}"]'
-    LOGIN_TEXT = f'div[title="{_LOGIN}"]'
-    NAME_TEXT = f'div[title="{_USERNAME}"]'
+    AVATAR = f'button[data-login="{BasePagePlaywright._LOGIN}"]'
+    LOGIN_TEXT = f'div[title="{BasePagePlaywright._LOGIN}"]'
+    NAME_TEXT = f'div[title="{BasePagePlaywright._USERNAME}"]'
     USERNAME_PASSWORD_ERROR_TEXT = ".flash-error .js-flash-alert"
 
     def __init__(self, page):

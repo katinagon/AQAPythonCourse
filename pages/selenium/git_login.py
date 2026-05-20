@@ -1,35 +1,22 @@
-import os
-
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 
 from pages.base import BasePageSelenium
 
 
 class GitLoginPage(BasePageSelenium):
-    _BASE_URL = os.getenv("BASE_URL")
-    _LOGIN = os.getenv("GH_LOGIN")
-    _PASSWORD = os.getenv("GH_PASSWORD")
-    _USERNAME = os.getenv("GH_USERNAME")
-
     LOGIN_INPUT = (By.ID, "login_field")
     PASSWORD_INPUT = (By.ID, "password")
     LOGIN_BUTTON = (By.CSS_SELECTOR, 'input[name="commit"]')
     DASHBOARD_TEXT = (By.XPATH, '//span[text()="Dashboard"]')
     HOME_TEXT = (By.XPATH, '//h2[text()="Home"]')
     AVATAR = (By.CSS_SELECTOR, 'img[data-testid="github-avatar"]')
-    LOGIN_TEXT = (By.CSS_SELECTOR, f'div[title="{_LOGIN}"]')
-    NAME_TEXT = (By.CSS_SELECTOR, f'div[title="{_USERNAME}"]')
+    LOGIN_TEXT = (By.CSS_SELECTOR, f'div[title="{BasePageSelenium._LOGIN}"]')
+    NAME_TEXT = (By.CSS_SELECTOR, f'div[title="{BasePageSelenium._USERNAME}"]')
     USERNAME_PASSWORD_ERROR_TEXT = (By.CSS_SELECTOR, ".flash-error .js-flash-alert")
 
     def __init__(self, driver):
         super().__init__(driver)
         self.url = f"{self._BASE_URL}/login"
-        self.wait = WebDriverWait(driver, 10)
-
-    def find(self, locator):
-        return self.wait.until(EC.presence_of_element_located(locator))
 
     def open(self):
         self.driver.get(self.url)
