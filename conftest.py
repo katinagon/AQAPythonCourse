@@ -1,6 +1,9 @@
 import pytest
+from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 from selenium import webdriver
+
+load_dotenv()
 
 
 @pytest.fixture(scope="function")
