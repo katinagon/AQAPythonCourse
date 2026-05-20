@@ -1,26 +1,17 @@
-import os
-
 from playwright.sync_api import Page
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-class BasePage:
-    _BASE_URL = os.getenv("BASE_URL")
-    _LOGIN = os.getenv("GH_LOGIN")
-    _PASSWORD = os.getenv("GH_PASSWORD")
-    _USERNAME = os.getenv("GH_USERNAME")
+class BaseComponentPlaywright:
+    def __init__(self, page: Page):
+        self.page = page
 
 
-class BasePageSelenium(BasePage):
+class BaseComponentSelenium:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
 
     def find(self, locator):
         return self.wait.until(EC.presence_of_element_located(locator))
-
-
-class BasePagePlaywright(BasePage):
-    def __init__(self, page: Page):
-        self.page = page
