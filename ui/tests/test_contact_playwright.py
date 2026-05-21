@@ -9,7 +9,14 @@ from pages.playwright.home import HomePage
 @pytest.mark.playwright
 @pytest.mark.ui
 class TestGitContactPlaywright:
-    def test_filling_form(self, page):
+    @pytest.mark.parametrize(
+        "first_name, last_name",
+        [
+            ("John", "Pitt"),
+            ("Mary", "Sue"),
+        ],
+    )
+    def test_filling_form(self, page, first_name, last_name):
         home_page = HomePage(page)
         solution_menu = SolutionsMenu(page)
         cicd_page = CICDPage(page)
@@ -19,5 +26,5 @@ class TestGitContactPlaywright:
         home_page.go_to_solutions()
         solution_menu.select_cicd()
         cicd_page.click_contact_sales()
-        contact_sales_page.fill_form("John", "Pitt")
-        contact_sales_page.get_field_value("John", "Pitt")
+        contact_sales_page.fill_form(first_name, last_name)
+        contact_sales_page.get_field_value(first_name, last_name)
